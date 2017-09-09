@@ -1,4 +1,4 @@
-package rak.halo.stats.haloStats.model.customs;
+package rak.halo.stats.haloStats.model.serviceRecord;
 
 import java.time.Duration;
 

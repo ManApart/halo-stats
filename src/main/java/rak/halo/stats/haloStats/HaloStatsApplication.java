@@ -1,6 +1,6 @@
 package rak.halo.stats.haloStats;
 
-import rak.halo.stats.haloStats.model.customs.ServiceRecordCustomsArray;
+import rak.halo.stats.haloStats.model.serviceRecord.ServiceRecordArray;
 
 public class HaloStatsApplication {
 	private static final String userId = "iceburg 33308";
@@ -9,8 +9,9 @@ public class HaloStatsApplication {
 	public static void main(String[] args) {
 		HaloStatManager manager = new HaloStatManager();
 
-		ServiceRecordCustomsArray serviceRecord = manager.getServiceRecordForCustoms(userId, Platform.PC);
-
-		System.out.println(serviceRecord);
+		for (Platform platform : Platform.values()){
+			ServiceRecordArray serviceRecord = manager.getServiceRecordForCustoms(userId, platform);
+			System.out.println(platform.name() + " " + serviceRecord);
+		}
 	}
 }
