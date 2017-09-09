@@ -2,6 +2,9 @@ package rak.halo.stats.haloStats.model.serviceRecord;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import rak.halo.stats.haloStats.utility.ReflectivePrint;
+
+@ReflectivePrint
 public class ServiceRecordArray {
 	@JsonProperty("Results")
 	private ServiceRecord[] results;
