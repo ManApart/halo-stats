@@ -1,6 +1,7 @@
 package rak.halo.stats.haloStats;
 
 import rak.halo.stats.haloStats.model.serviceRecord.ServiceRecordArray;
+import rak.halo.stats.haloStats.utility.ModelReflectiveReader;
 
 public class HaloStatsApplication {
 	private static final String userId = "iceburg 33308";
@@ -11,7 +12,7 @@ public class HaloStatsApplication {
 
 		for (Platform platform : Platform.values()){
 			ServiceRecordArray serviceRecord = manager.getServiceRecordForCustoms(userId, platform);
-			System.out.println(platform.name() + " " + serviceRecord);
+			System.out.println(platform.name() + " " + ModelReflectiveReader.toString(serviceRecord));
 		}
 	}
 }

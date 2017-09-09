@@ -14,4 +14,12 @@ public class ServiceRecordResult {
     	return customStats.toString();
     }
 
+	public CustomStats getCustomStats() {
+		return customStats;
+	}
+
+	public void setCustomStats(CustomStats customStats) {
+		this.customStats = customStats;
+	}
+
 }

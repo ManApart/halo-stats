@@ -29,5 +29,15 @@ public class ServiceRecord {
         this.id = id;
     }
 
+	public ServiceRecordResult getResult() {
+		return result;
+	}
+
+	public void setResult(ServiceRecordResult result) {
+		this.result = result;
+	}
+    
+    
+
 
 }
