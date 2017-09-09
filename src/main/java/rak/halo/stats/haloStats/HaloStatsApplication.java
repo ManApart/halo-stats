@@ -1,19 +1,15 @@
 package rak.halo.stats.haloStats;
 
-import rak.halo.stats.haloStats.model.ServiceRecordCustoms;
+import rak.halo.stats.haloStats.model.customs.ServiceRecordCustomsArray;
 
 public class HaloStatsApplication {
-//	private static final String userId = "iceburg 33308";
-	private static final String userId = "danceparty17";
+	private static final String userId = "iceburg 33308";
+//	private static final String userId = "danceparty17";
 
 	public static void main(String[] args) {
 		HaloStatManager manager = new HaloStatManager();
 
-		ServiceRecordCustoms serviceRecord = manager.getServiceRecordForCustoms(userId);
-
-//		RestTemplate restTemplate = new RestTemplate();
-//		Testthing test = restTemplate.getForObject("http://gturnquist-quoters.cfapps.io/api/random", Testthing.class);
-//		System.out.println(test);
+		ServiceRecordCustomsArray serviceRecord = manager.getServiceRecordForCustoms(userId);
 
 		System.out.println(serviceRecord);
 	}

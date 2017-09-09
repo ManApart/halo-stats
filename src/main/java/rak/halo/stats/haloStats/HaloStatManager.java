@@ -6,29 +6,30 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 
-import rak.halo.stats.haloStats.model.ServiceRecordCustoms;
+import rak.halo.stats.haloStats.model.customs.ServiceRecordCustomsArray;
 
 public class HaloStatManager {
 	private static final String TOKEN = "170f6ad95dd740689eedc31707ccf2c2";
-	private static final String BASE_URL = "https://www.haloapi.com/stats/h5pc/servicerecords/custom?players=";
+	private static final String BASE_URL = "https://www.haloapi.com/stats/";
+	private static final String XBOX_URL = "h5/";
+	private static final String PC_URL = "h5pc/";
 	
-	public ServiceRecordCustoms getServiceRecordForCustoms(String userId){
-		String url = BASE_URL + userId;
+	
+	public ServiceRecordCustomsArray getServiceRecordForCustoms(String userId){
+		String methodUrl = "servicerecords/custom?players=";
+		String url = BASE_URL + PC_URL + methodUrl + userId;
 		
-		return makeCall(url, ServiceRecordCustoms.class);
+		return makeGetCall(url, ServiceRecordCustomsArray.class);
 	}
 
-	public <T> T makeCall(String url, Class<T> clazz) {
+	public <T> T makeGetCall(String url, Class<T> clazz) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		headers.set("Ocp-Apim-Subscription-Key", TOKEN);
 		HttpEntity<String> entity = new HttpEntity<String>("", headers);
 		
 		RestTemplate restTemplate = new RestTemplate();
-//		T result = restTemplate.postForObject(url, entity, clazz);
-		
 		T result = restTemplate.exchange(url, HttpMethod.GET, entity, clazz).getBody();
-		
 		return result;
 	}
 	
