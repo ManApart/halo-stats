@@ -11,18 +11,15 @@ import rak.halo.stats.haloStats.model.customs.ServiceRecordCustomsArray;
 public class HaloStatManager {
 	private static final String TOKEN = "170f6ad95dd740689eedc31707ccf2c2";
 	private static final String BASE_URL = "https://www.haloapi.com/stats/";
-	private static final String XBOX_URL = "h5/";
-	private static final String PC_URL = "h5pc/";
 	
-	
-	public ServiceRecordCustomsArray getServiceRecordForCustoms(String userId){
+	public ServiceRecordCustomsArray getServiceRecordForCustoms(String userId, Platform patform){
 		String methodUrl = "servicerecords/custom?players=";
-		String url = BASE_URL + PC_URL + methodUrl + userId;
+		String url = BASE_URL + patform + methodUrl + userId;
 		
 		return makeGetCall(url, ServiceRecordCustomsArray.class);
 	}
-
-	public <T> T makeGetCall(String url, Class<T> clazz) {
+	
+	private <T> T makeGetCall(String url, Class<T> clazz) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		headers.set("Ocp-Apim-Subscription-Key", TOKEN);

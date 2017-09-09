@@ -9,7 +9,7 @@ public class HaloStatsApplication {
 	public static void main(String[] args) {
 		HaloStatManager manager = new HaloStatManager();
 
-		ServiceRecordCustomsArray serviceRecord = manager.getServiceRecordForCustoms(userId);
+		ServiceRecordCustomsArray serviceRecord = manager.getServiceRecordForCustoms(userId, Platform.PC);
 
 		System.out.println(serviceRecord);
 	}
