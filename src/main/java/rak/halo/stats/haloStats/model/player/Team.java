@@ -1,4 +1,4 @@
-package rak.halo.stats.haloStats.model.playerMatches;
+package rak.halo.stats.haloStats.model.player;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

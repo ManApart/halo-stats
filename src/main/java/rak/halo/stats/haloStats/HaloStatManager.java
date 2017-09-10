@@ -6,11 +6,11 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 
-import rak.halo.stats.haloStats.model.carnageReport.CarnageReport;
 import rak.halo.stats.haloStats.model.enums.GameMode;
 import rak.halo.stats.haloStats.model.enums.Platform;
-import rak.halo.stats.haloStats.model.playerMatches.PlayerStatResults;
-import rak.halo.stats.haloStats.model.playerMatches.Result;
+import rak.halo.stats.haloStats.model.matches.CarnageReport;
+import rak.halo.stats.haloStats.model.matches.GameHistory;
+import rak.halo.stats.haloStats.model.matches.MatchMetaInfo;
 import rak.halo.stats.haloStats.model.serviceRecord.ServiceRecordArray;
 
 public class HaloStatManager {
@@ -22,22 +22,22 @@ public class HaloStatManager {
 		return makeGetCall(url, ServiceRecordArray.class);
 	}
 	
-	public PlayerStatResults getPlayerMatchHistory(String userId, Platform platform){
+	public GameHistory getPlayerMatchHistory(String userId, Platform platform){
 		String url = BASE_URL + platform + "players/" + userId + "/matches";
-		return makeGetCall(url, PlayerStatResults.class);
+		return makeGetCall(url, GameHistory.class);
 	}
 	
-	public PlayerStatResults getPlayerMatchHistory(String userId, Platform platform, GameMode[] modes, int start, int count){
+	public GameHistory getPlayerMatchHistory(String userId, Platform platform, GameMode[] modes, int start, int count){
 		String modesString = modesToQueryString(modes);
 		String possibleAmpersand = modesString == null ? "&" : "";
 		String url = BASE_URL + platform + "players/" + userId + "/matches?" + modesString + possibleAmpersand + start + "&" + count;
-		return makeGetCall(url, PlayerStatResults.class);
+		return makeGetCall(url, GameHistory.class);
 	}
 	
 	public CarnageReport getLatestMatchResult(String userId, Platform platform){
-		PlayerStatResults history = getPlayerMatchHistory(userId, platform, null, 0, 1);
+		GameHistory history = getPlayerMatchHistory(userId, platform, null, 0, 1);
 		if (history.getResults().length > 0){
-			Result historyMatch = history.getResults()[0];
+			MatchMetaInfo historyMatch = history.getResults()[0];
 			String matchId = historyMatch.getId().getMatchId();
 			GameMode mode = historyMatch.getId().getGameModeEnum();
 			

@@ -1,9 +1,7 @@
-package rak.halo.stats.haloStats.model.carnageReport;
+package rak.halo.stats.haloStats.model.player;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import rak.halo.stats.haloStats.model.playerMatches.PlayerInfo;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PlayerStats {

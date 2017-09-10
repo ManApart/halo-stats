@@ -1,4 +1,4 @@
-package rak.halo.stats.haloStats.model;
+package rak.halo.stats.haloStats.model.other;
 
 import java.time.Duration;
 

@@ -1,7 +1,7 @@
 package rak.halo.stats.haloStats;
 
-import rak.halo.stats.haloStats.model.carnageReport.CarnageReport;
 import rak.halo.stats.haloStats.model.enums.Platform;
+import rak.halo.stats.haloStats.model.matches.CarnageReport;
 import rak.halo.stats.haloStats.utility.ModelReflectiveReader;
 
 public class HaloStatsApplication {

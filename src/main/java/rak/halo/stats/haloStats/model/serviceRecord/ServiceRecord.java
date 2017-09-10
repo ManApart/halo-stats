@@ -9,38 +9,17 @@ import rak.halo.stats.haloStats.utility.ReflectivePrint;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ServiceRecord {
 	
-	@JsonProperty("Id")
-	private String id;
-	
-	@JsonProperty("Result")
-	private ServiceRecordResult result;
-	
-	public ServiceRecord(){
-		
-	}
+	@JsonProperty("CustomStats")
+	private CustomStats customStats;
 	
     @Override
     public String toString(){
-    	return "id: " + id + "\n" + result;
-    }
-	
-    public String getid() {
-        return id;
+    	return customStats.toString();
     }
 
-    public void setid(String id) {
-        this.id = id;
-    }
-
-	public ServiceRecordResult getResult() {
-		return result;
+	public CustomStats getCustomStats() {
+		return customStats;
 	}
-
-	public void setResult(ServiceRecordResult result) {
-		this.result = result;
-	}
-    
-    
 
 
 }

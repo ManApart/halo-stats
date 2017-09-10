@@ -7,7 +7,7 @@ import rak.halo.stats.haloStats.utility.ReflectivePrint;
 @ReflectivePrint
 public class ServiceRecordArray {
 	@JsonProperty("Results")
-	private ServiceRecord[] results;
+	private ServiceRecordForPlayer[] results;
 	
 	public ServiceRecordArray() {
 	}
@@ -15,17 +15,17 @@ public class ServiceRecordArray {
 	@Override
 	public String toString(){
 		String message = "";
-		for (ServiceRecord result : getResults()){
+		for (ServiceRecordForPlayer result : getResults()){
 			message += result.toString();
 		}
 		return message;
 	}
 
-	public ServiceRecord[] getResults() {
+	public ServiceRecordForPlayer[] getResults() {
 		return results;
 	}
 
-	public void setResults(ServiceRecord[] results) {
+	public void setResults(ServiceRecordForPlayer[] results) {
 		this.results = results;
 	}
 }

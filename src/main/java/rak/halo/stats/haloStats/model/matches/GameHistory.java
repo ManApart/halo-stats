@@ -1,10 +1,10 @@
-package rak.halo.stats.haloStats.model.playerMatches;
+package rak.halo.stats.haloStats.model.matches;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties("Links")
-public class PlayerStatResults {
+public class GameHistory {
 	@JsonProperty("Start")
 	private int start;
 	
@@ -15,13 +15,13 @@ public class PlayerStatResults {
 	private int resultCount;
 	
 	@JsonProperty("Results")
-	private Result[] results;
+	private MatchMetaInfo[] results;
 	
-	public Result[] getResults() {
+	public MatchMetaInfo[] getResults() {
 		return results;
 	}
 	
-	public void setResults(Result[] results) {
+	public void setResults(MatchMetaInfo[] results) {
 		this.results = results;
 	}
 	public int getStart() {
