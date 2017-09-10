@@ -1,4 +1,4 @@
-package rak.halo.stats.haloStats;
+package rak.halo.stats.haloStats.model.enums;
 
 public enum Platform {
 	XBOX("h5/"),

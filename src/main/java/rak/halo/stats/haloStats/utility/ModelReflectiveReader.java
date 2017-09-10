@@ -10,11 +10,12 @@ public class ModelReflectiveReader {
 
 	public static <T> String toString(T object) {
 		String message = "";
-		
-		if (isArrayObject(object)){
-			message = printArrayObject(object);
-		} else {
-			message = printFields(object);
+		if (object != null){
+			if (isArrayObject(object)){
+				message = printArrayObject(object);
+			} else {
+				message = printFields(object);
+			}
 		}
 		return message;
 	}
@@ -64,13 +65,14 @@ public class ModelReflectiveReader {
 		if (shouldRecursivelyPrint(value)){
 			return toString(value);
 		} else {
-			return field.getName() + ": " + value.toString() + "\n";
+			return field.getName() + ": " + value + "\n";
 		}
 	}
 
 	private static <T> boolean shouldRecursivelyPrint(T object) {
-		return object.getClass().isAnnotationPresent(ReflectivePrint.class)
-				|| isArrayObject(object);
+		return object != null 
+			&& (object.getClass().isAnnotationPresent(ReflectivePrint.class)
+			|| isArrayObject(object));
 	}
 
 
