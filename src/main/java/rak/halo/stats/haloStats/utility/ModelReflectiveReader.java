@@ -2,6 +2,9 @@ package rak.halo.stats.haloStats.utility;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /*
  * Recursively prints ALL fields (including private) on an object with the @ReflectivePrint annotation, and any sub objects that have the same annotation
@@ -43,10 +46,23 @@ public class ModelReflectiveReader {
 	
 	public static <T> String printFields(T object) {
 		String message = "";
-		for (Field field : object.getClass().getDeclaredFields()) {
+		
+		for (Field field : getAllFields(object)) {
 			message += fieldToString(object, field);
 		}
 		return message;
+	}
+
+	public static <T> List<Field> getAllFields(T object) {
+		List<Field> list = new ArrayList<>();
+		Class<?> current = object.getClass();
+		list.addAll(Arrays.asList(current.getDeclaredFields()));
+		
+		while (current.getSuperclass() != null)	{
+			current = current.getSuperclass();
+			list.addAll(Arrays.asList(current.getDeclaredFields()));
+		}
+		return list;
 	}
 
 	private static <T> String fieldToString(T object, Field field) {
@@ -64,8 +80,10 @@ public class ModelReflectiveReader {
 		
 		if (shouldRecursivelyPrint(value)){
 			return toString(value);
-		} else {
+		} else if(value != null){
 			return field.getName() + ": " + value + "\n";
+		} else {
+			return "";
 		}
 	}
 

@@ -17,8 +17,8 @@ public class HaloStatManager {
 	private static final String TOKEN = "170f6ad95dd740689eedc31707ccf2c2";
 	private static final String BASE_URL = "https://www.haloapi.com/stats/";
 	
-	public ServiceRecordArray getServiceRecordForCustoms(String userId, Platform platform){
-		String url = BASE_URL + platform + "servicerecords/custom?players=" + userId;
+	public ServiceRecordArray getServiceRecord(String userId, Platform platform, GameMode mode){
+		String url = BASE_URL + platform + "servicerecords/" + mode.getName() + "?players=" + userId;
 		return makeGetCall(url, ServiceRecordArray.class);
 	}
 	
@@ -72,8 +72,14 @@ public class HaloStatManager {
 		HttpEntity<String> entity = new HttpEntity<String>("", headers);
 		
 		RestTemplate restTemplate = new RestTemplate();
-		T result = restTemplate.exchange(url, HttpMethod.GET, entity, clazz).getBody();
-		return result;
+		try {
+			T result = restTemplate.exchange(url, HttpMethod.GET, entity, clazz).getBody();
+			return result;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 }

@@ -6,6 +6,6 @@ import rak.halo.stats.haloStats.utility.ReflectivePrint;
 
 @ReflectivePrint
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CustomStats extends CoreStats {
-	
+public class ArenaStats extends CoreStats {
+
 }

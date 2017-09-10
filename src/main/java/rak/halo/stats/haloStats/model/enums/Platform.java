@@ -1,8 +1,8 @@
 package rak.halo.stats.haloStats.model.enums;
 
 public enum Platform {
-	XBOX("h5/"),
-	PC("h5pc/");
+	PC("h5pc/"),
+	XBOX("h5/");
 	
 	private String path;
 	
