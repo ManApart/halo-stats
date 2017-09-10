@@ -29,8 +29,8 @@ public class HaloStatsManager {
 	
 	public GameHistory getPlayerMatchHistory(String userId, Platform platform, GameMode[] modes, int start, int count){
 		String modesString = modesToQueryString(modes);
-		String possibleAmpersand = modesString == null ? "&" : "";
-		String url = BASE_URL + platform + "players/" + userId + "/matches?" + modesString + possibleAmpersand + start + "&" + count;
+		String possibleAmpersand = modesString != "" ? "&" : "";
+		String url = BASE_URL + platform + "players/" + userId + "/matches?" + modesString + possibleAmpersand + "start=" + start + "&count=" + count;
 		return makeGetCall(url, GameHistory.class);
 	}
 	
@@ -53,14 +53,14 @@ public class HaloStatsManager {
 	
 	private String modesToQueryString(GameMode[] modes){
 		if (modes == null){
-			return null;
+			return "";
 		}
-		String query = "";
+		String query = "modes=";
 		for (GameMode mode : modes){
 			query += mode.getName() + ",";
 		}
-		if (query.length() > 0){
-			query.substring(0, query.length()-1);
+		if (query.endsWith(",")){
+			query = query.substring(0, query.length()-1);
 		}
 		return query;
 	}

@@ -14,5 +14,14 @@ public enum Platform {
 	public String toString(){
 		return path;
 	}
+	
+	public static Platform findValue(String text){
+		for (Platform platform : Platform.values()){
+			if (platform.name().equalsIgnoreCase(text)){
+				return platform;
+			}
+		}
+		return PC;
+	}
 
 }
