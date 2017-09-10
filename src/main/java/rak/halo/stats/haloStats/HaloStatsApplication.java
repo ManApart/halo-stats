@@ -1,8 +1,7 @@
 package rak.halo.stats.haloStats;
 
-import rak.halo.stats.haloStats.model.enums.GameMode;
 import rak.halo.stats.haloStats.model.enums.Platform;
-import rak.halo.stats.haloStats.model.serviceRecord.ServiceRecordArray;
+import rak.halo.stats.haloStats.model.matches.CarnageReport;
 import rak.halo.stats.haloStats.utility.ModelReflectiveReader;
 
 public class HaloStatsApplication {
@@ -10,11 +9,11 @@ public class HaloStatsApplication {
 //	private static final String userId = "danceparty17";
 
 	public static void main(String[] args) {
-		HaloStatManager manager = new HaloStatManager();
+		HaloStatsManager manager = new HaloStatsManager();
 
 		for (Platform platform : Platform.values()){
-			ServiceRecordArray result = manager.getServiceRecord(userId, platform, GameMode.ARENA);
-//			CarnageReport result = manager.getLatestMatchResult(userId, platform);
+//			ServiceRecordArray result = manager.getServiceRecord(userId, platform, GameMode.ARENA);
+			CarnageReport result = manager.getLatestMatchResult(userId, platform);
 //			PlayerStatResults result = manager.getPlayerMatchHistory(userId, platform, null, 0, 1);
 //			PlayerStatResults result = manager.getPlayerMatchHistory(userId, platform, new GameMode[]{GameMode.CUSTOM}, 0, 1);
 			System.out.println(platform.name() + " " + ModelReflectiveReader.toString(result));

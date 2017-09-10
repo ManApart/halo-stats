@@ -13,7 +13,7 @@ import rak.halo.stats.haloStats.model.matches.GameHistory;
 import rak.halo.stats.haloStats.model.matches.MatchMetaInfo;
 import rak.halo.stats.haloStats.model.serviceRecord.ServiceRecordArray;
 
-public class HaloStatManager {
+public class HaloStatsManager {
 	private static final String TOKEN = "170f6ad95dd740689eedc31707ccf2c2";
 	private static final String BASE_URL = "https://www.haloapi.com/stats/";
 	
