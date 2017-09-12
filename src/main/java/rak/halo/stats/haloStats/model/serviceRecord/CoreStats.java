@@ -14,4 +14,14 @@ public class CoreStats {
 	@JsonProperty("TotalTimePlayed")
 	private FriendlyDuration totalTimePlayed;
 
+	public int getTotalMeleeKills() {
+		return totalMeleeKills;
+	}
+
+	public FriendlyDuration getTotalTimePlayed() {
+		return totalTimePlayed;
+	}
+	
+	
+
 }
