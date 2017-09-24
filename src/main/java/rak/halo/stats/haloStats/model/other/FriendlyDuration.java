@@ -6,7 +6,11 @@ public class FriendlyDuration {
 	private Duration duration;
 	
 	public FriendlyDuration(String duration) {
-		this.duration = Duration.parse(duration);
+		try {
+			this.duration = Duration.parse(duration);
+		} catch (Exception e){
+			this.duration = Duration.ZERO;
+		}
 	}
 	
 	public FriendlyDuration(Duration duration) {
