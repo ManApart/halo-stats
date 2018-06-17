@@ -12,9 +12,9 @@ import rak.halo.stats.haloStats.model.matches.CarnageReport;
 import rak.halo.stats.haloStats.model.matches.GameHistory;
 import rak.halo.stats.haloStats.model.matches.MatchMetaInfo;
 import rak.halo.stats.haloStats.model.serviceRecord.ServiceRecordArray;
+import rak.halo.stats.haloStats.utility.Keys;
 
 public class HaloStatsManager {
-	private static final String TOKEN = "170f6ad95dd740689eedc31707ccf2c2";
 	private static final String BASE_URL = "https://www.haloapi.com/stats/";
 	
 	public ServiceRecordArray getServiceRecord(String userId, Platform platform, GameMode mode){
@@ -68,7 +68,7 @@ public class HaloStatsManager {
 	private <T> T makeGetCall(String url, Class<T> clazz) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
-		headers.set("Ocp-Apim-Subscription-Key", TOKEN);
+		headers.set("Ocp-Apim-Subscription-Key", Keys.TOKEN);
 		HttpEntity<String> entity = new HttpEntity<String>("", headers);
 		
 		RestTemplate restTemplate = new RestTemplate();
